@@ -2,20 +2,19 @@ import React from 'react';
 import axios from 'axios';
 
 let date = new Date();
-const dd = date.getDate();
-const mm = date.getMonth() + 1;
-const yyyy = date.getFullYear();
+let dd = date.getDate();
+let mm = date.getMonth() + 1;
+let yyyy = date.getFullYear();
 
 if(dd<10) {
     dd = '0'+dd
-} 
+}
 
 if(mm<10) {
     mm = '0'+mm
-} 
+}
 
 let today = mm + '/' + dd + '/' + yyyy;
-
 
 const ResearchUser = () => {
     return(
@@ -31,7 +30,7 @@ const ResearchUser = () => {
   <tbody>
     <tr>
       <th scope="row">M1: Oletta River</th>
-      <td>Click Here</td>
+      <td><button>Click Here</button></td>
       <td></td>
       <td></td>
     </tr>
