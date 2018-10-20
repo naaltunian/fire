@@ -2,9 +2,9 @@ import React from "react";
 
 const Navbar = (props) => {
     return(
-        <nav className="navbar navbar-dark bg-primary">
-            <img className="navbar-brand" alt="img"></img>
-        </nav>
+        <div className="navbar navbar-dark bg-primary">
+            <img className="navbar-brand" src="./images/fire.ico" alt="Fire"></img>
+        </div>
     )
 }
 
