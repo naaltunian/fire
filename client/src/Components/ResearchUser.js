@@ -20,7 +20,8 @@ let today = mm + '/' + dd + '/' + yyyy;
 class ResearchUser extends React.Component {
     state = {
         open: false,
-        date: null
+        date: null,
+        approved: null
     }
 
     openModal = (e) => {
@@ -31,7 +32,7 @@ class ResearchUser extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         console.log("Submitted");
-        this.setState({ date: today });
+        this.setState({ date: today, open: false, approved: "Approved" });
     }
 
     render() {
@@ -50,20 +51,26 @@ class ResearchUser extends React.Component {
                         <tr>
                         <th scope="row">M1: Oletta River</th>
                         <td><button onClick={this.openModal}>Click Here</button></td>
-                        <td>{this.state.date}</td>
+                        <td></td>
                         <td></td>
                         </tr>
                         <tr>
                         <th scope="row">M2: Boca Raton</th>
-                        <td>Click Here</td>
+                        <td><button onClick={this.openModal}>Click Here</button></td>
                         <td></td>
                         <td></td>
                         </tr>
                         <tr>
                         <th scope="row">M3: South Beach</th>
-                        <td>Click Here</td>
+                        <td><button onClick={this.openModal}>Click Here</button></td>
                         <td></td>
                         <td></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">M4: Palm Beach Hackathon 2018</th>
+                        <td><button onClick={this.openModal}>Click Here</button></td>
+                        <td>{this.state.date}</td>
+                        <td>{this.state.approved}</td>
                         </tr>
                     </tbody>
                 </table>
