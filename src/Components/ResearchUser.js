@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Form from "./Form.js";
 
 let date = new Date();
 let dd = date.getDate();
@@ -16,71 +17,62 @@ if(mm<10) {
 
 let today = mm + '/' + dd + '/' + yyyy;
 
-const ResearchUser = () => {
-    return(
-        <table className="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Location</th>
-      <th scope="col">Request Data</th>
-      <th scope="col">Date Requested</th>
-      <th scope="col">Approved?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">M1: Oletta River</th>
-      <td><button>Click Here</button></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">M2: Boca Raton</th>
-      <td>Click Here</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">M3: South Beach</th>
-      <td>Click Here</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-    )
+class ResearchUser extends React.Component {
+    state = {
+        open: false,
+        date: null
+    }
+
+    openModal = (e) => {
+        e.preventDefault();
+        this.setState({ open: true });
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        console.log("Submitted");
+        this.setState({ date: today });
+    }
+
+    render() {
+        return(
+            <div>
+                <table className="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col">Location</th>
+                        <th scope="col">Request Data</th>
+                        <th scope="col">Date Requested</th>
+                        <th scope="col">Approved?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">M1: Oletta River</th>
+                        <td><button onClick={this.openModal}>Click Here</button></td>
+                        <td>{this.state.date}</td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">M2: Boca Raton</th>
+                        <td>Click Here</td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">M3: South Beach</th>
+                        <td>Click Here</td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                { this.state.open === false ? true : <Form onSubmit={this.onSubmit}  /> }
+            </div>
+        )
+    }
 }
 
+// onSubmit={this.onSubmit}
+
 export default ResearchUser;
-
-// <Table celled>
-/* <Table.Header striped>
-<Table.Row>
-    <Table.HeaderCell>Location</Table.HeaderCell>
-    <Table.HeaderCell>Request Data</Table.HeaderCell>
-    <Table.HeaderCell>Date Requested</Table.HeaderCell>
-    <Table.HeaderCell>Approved</Table.HeaderCell>
-</Table.Row>
-</Table.Header>
-
-<Table.Body>
-<Table.Row>
-    <Table.Cell>M1: Oletta River</Table.Cell>
-    <Table.Cell>Click Here</Table.Cell>
-    <Table.Cell></Table.Cell>
-    <Table.Cell></Table.Cell>
-</Table.Row>
-<Table.Row>
-    <Table.Cell>M2: Boca Raton</Table.Cell>
-    <Table.Cell>Click Here</Table.Cell>
-    <Table.Cell></Table.Cell>
-    <Table.Cell></Table.Cell>
-</Table.Row>
-<Table.Row>
-    <Table.Cell>M3: South Beach</Table.Cell>
-    <Table.Cell>Click Here</Table.Cell>
-    <Table.Cell></Table.Cell>
-    <Table.Cell></Table.Cell>
-</Table.Row>
-</Table.Body>
-</Table> */
