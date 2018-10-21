@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Form from "./Form.js";
+import Photos from "./Photos.js";
 
 let date = new Date();
 let dd = date.getDate();
@@ -21,7 +22,8 @@ class ResearchUser extends React.Component {
     state = {
         open: false,
         date: null,
-        approved: null
+        approved: null,
+        data: false
     }
 
     openModal = (e) => {
@@ -32,7 +34,7 @@ class ResearchUser extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         console.log("Submitted");
-        this.setState({ date: today, open: false, approved: "Approved" });
+        this.setState({ date: today, open: false, approved: "Approved", data: true });
     }
 
     render() {
@@ -67,7 +69,7 @@ class ResearchUser extends React.Component {
                         <td></td>
                         </tr>
                         <tr>
-                        <th scope="row">M4: Palm Beach Hackathon 2018</th>
+                        <th scope="row">M4: Palm Beach Tech Hackathon 2018</th>
                         <td><button onClick={this.openModal}>Click Here</button></td>
                         <td>{this.state.date}</td>
                         <td>{this.state.approved}</td>
@@ -75,11 +77,14 @@ class ResearchUser extends React.Component {
                     </tbody>
                 </table>
                 { this.state.open === false ? true : <Form onSubmit={this.onSubmit}  /> }
+                { this.state.data === false ? true : <Photos />}
             </div>
         )
     }
 }
 
 // onSubmit={this.onSubmit}
+
+//{ this.state.data === false ? true : <Photos />}
 
 export default ResearchUser;
